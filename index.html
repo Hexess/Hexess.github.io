@@ -336,9 +336,7 @@
             <blockquote>
 <p>React use virtual DOM to re-render which is really efficient</p>
 </blockquote>
-<p><strong>Rebuild DOM</strong></p>
-<hr>
-<ol>
+<h2 id="Rebuild-DOM"><a href="#Rebuild-DOM" class="headerlink" title="Rebuild DOM"></a><strong>Rebuild DOM</strong></h2><ol>
 <li>State(data)</li>
 <li>JSX template</li>
 <li>Generated DOM from state and JSX template</li>
@@ -346,9 +344,7 @@
 <li>New state and data formed DOM to substitute old DOM  </li>
 </ol>
 <p><em>Defect: Inefficient</em>  </p>
-<p><strong>Improvement</strong></p>
-<hr>
-<ol>
+<h2 id="Improvement"><a href="#Improvement" class="headerlink" title="Improvement"></a><strong>Improvement</strong></h2><ol>
 <li>State</li>
 <li>JSX template</li>
 <li>Generated DOM from state and JSX template</li>
@@ -359,9 +355,7 @@
 <li>Substituted input in original DOM with new input</li>
 </ol>
 <p><em>Defect:</em> Still inefficient because we compared new DOM with the original one</p>
-<p><strong>React Scheme</strong></p>
-<hr>
-<ol>
+<h2 id="React-Scheme"><a href="#React-Scheme" class="headerlink" title="React Scheme"></a><strong>React Scheme</strong></h2><ol>
 <li><p>State</p>
 </li>
 <li><p>JSX template</p>
@@ -388,9 +382,7 @@
 <p>The above two lines are same, the process is like:</p>
 <p>JSX -&gt; createElement -&gt; virtual DOM -&gt; DOM</p>
 </blockquote>
-<p><strong>Advantage</strong></p>
-<hr>
-<ol>
+<h2 id="Advantage"><a href="#Advantage" class="headerlink" title="Advantage"></a><strong>Advantage</strong></h2><ol>
 <li>More efficient</li>
 <li>Help to develop cross-platform application  </li>
 </ol>
