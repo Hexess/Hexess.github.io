@@ -86,13 +86,13 @@
 <meta property="og:site_name" content="Koko is Koding">
 <meta property="og:description" content="React use virtual DOM to re-render which is really efficient  Rebuild DOM   State(data) JSX template Generated DOM from state and JSX template State or props changed   New state and data formed DOM t">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/Users/zhaoyili/KokoBlog/source/images/level.png">
-<meta property="og:image" content="http://yoursite.com/Users/zhaoyili/KokoBlog/source/images/keys.png">
-<meta property="og:updated_time" content="2019-07-31T16:11:59.161Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/level.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/key.png">
+<meta property="og:updated_time" content="2019-07-31T16:35:48.338Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React -- Virtual DOM">
 <meta name="twitter:description" content="React use virtual DOM to re-render which is really efficient  Rebuild DOM   State(data) JSX template Generated DOM from state and JSX template State or props changed   New state and data formed DOM t">
-<meta name="twitter:image" content="http://yoursite.com/Users/zhaoyili/KokoBlog/source/images/level.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/level.png">
 
 
 
@@ -391,18 +391,16 @@
 <hr>
 <ol>
 <li>More efficient</li>
-<li>Help to develop cross-platform application</li>
+<li>Help to develop cross-platform application  </li>
 </ol>
-<p><strong>Diff Algorithm</strong>: DOM comparison</p>
-<hr>
-<ul>
+<h2 id="Diff-Algorithm-DOM-comparison"><a href="#Diff-Algorithm-DOM-comparison" class="headerlink" title="Diff Algorithm: DOM comparison  "></a><strong>Diff Algorithm</strong>: DOM comparison  </h2><ul>
 <li><p>Principle: Compare the same level, one we found difference, stop comparing and generated new DOM to replace all below-levels DOM</p>
-<p><img src="/Users/zhaoyili/KokoBlog/source/images/level.png" alt="level comparing"></p>
+<p><img src="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/level.png" alt="level comparing"></p>
 </li>
 <li><p>Advantages: Easy algorithm and fast speed</p>
 </li>
 <li><p>Keys:</p>
-<p><img src="/Users/zhaoyili/KokoBlog/source/images/keys.png" alt="keys"></p>
+<p><img src="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/key.png" alt="keys"></p>
 <ul>
 <li>Without keys: we can not connect the same layers directly, so we need two loops to compare each layer.</li>
 <li>With keys: like HashMap, we can easily compare the pairs(same layer) and find difference.<ul>
@@ -496,8 +494,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -541,6 +548,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Diff-Algorithm-DOM-comparison"><span class="nav-number">1.</span> <span class="nav-text">Diff Algorithm: DOM comparison  </span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
