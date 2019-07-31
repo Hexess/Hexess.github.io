@@ -88,7 +88,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/level.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/key.png">
-<meta property="og:updated_time" content="2019-07-31T16:37:31.065Z">
+<meta property="og:updated_time" content="2019-07-31T16:39:45.126Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React -- Virtual DOM">
 <meta name="twitter:description" content="React use virtual DOM to re-render which is really efficient  Rebuild DOM State(data) JSX template Generated DOM from state and JSX template State or props changed   New state and data formed DOM to">
@@ -373,10 +373,10 @@
 <li><p>Compared new virtual DOM and the original one and found changes(Efficient!)</p>
 </li>
 <li><p>Changed the original DOM</p>
+<pre><code class="javascript"><span class="keyword">return</span> &lt;div&gt;&lt;span&gt;item&lt;/span&gt;&lt;/div&gt;
+<span class="keyword">return</span> React.createElement(<span class="string">'div'</span>,{},React.createElement(<span class="string">'span'</span>,{},<span class="string">'item'</span>));</code></pre>
 </li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">return</span> &lt;div&gt;&lt;span&gt;item&lt;/span&gt;&lt;/div&gt;</span><br><span class="line"> <span class="keyword">return</span> React.createElement(<span class="string">'div'</span>,&#123;&#125;,React.createElement(<span class="string">'span'</span>,&#123;&#125;,<span class="string">'item'</span>));</span><br><span class="line"><span class="string">`</span></span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>The above two lines are same, the process is like:</p>
 <p>JSX -&gt; createElement -&gt; virtual DOM -&gt; DOM</p>
