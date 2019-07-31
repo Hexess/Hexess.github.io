@@ -337,9 +337,7 @@
 <p>Each component has several “lifecycle methods” that you can override to run code at particular times in the process. Methods prefixed with will are called right before something happens, and methods prefixed with did are called right after something happens.</p>
 </blockquote>
 <p><img src="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/Screen%20Shot%202019-07-31%20at%2010.59.05.png" alt="diagram"></p>
-<p><strong>Mounting</strong></p>
-<hr>
-<ul>
+<h2 id="Mounting"><a href="#Mounting" class="headerlink" title="Mounting"></a><strong>Mounting</strong></h2><ul>
 <li><p>Before render(), componentWillMount() will be executed.</p>
 </li>
 <li><p>After render(), componentDidMount() will be executed.</p>
@@ -350,9 +348,7 @@
 <li><p>When render() is executed again, componentWillMount() and componentDidMount() don’t work.</p>
 </li>
 </ul>
-<p><strong>Updation</strong></p>
-<hr>
-<ul>
+<h2 id="Updation"><a href="#Updation" class="headerlink" title="Updation"></a><strong>Updation</strong></h2><ul>
 <li><p>Common for props and state:</p>
 <ul>
 <li><p>shouldComponentUpdate(): return boolean value, run before updating. If return false, there is no update.</p>
@@ -381,9 +377,7 @@
 </ul>
 </li>
 </ul>
-<p><strong>Unmounting</strong></p>
-<hr>
-<ul>
+<h2 id="Unmounting"><a href="#Unmounting" class="headerlink" title="Unmounting"></a><strong>Unmounting</strong></h2><ul>
 <li>componentWillUnmount(): when this component is going to be removed.</li>
 </ul>
 

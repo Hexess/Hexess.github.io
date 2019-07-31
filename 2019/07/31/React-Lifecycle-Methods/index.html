@@ -88,7 +88,7 @@
 <meta property="og:description" content="Each component has several “lifecycle methods” that you can override to run code at particular times in the process. Methods prefixed with will are called right before something happens, and methods">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/Screen%20Shot%202019-07-31%20at%2010.59.05.png">
-<meta property="og:updated_time" content="2019-07-31T21:25:30.697Z">
+<meta property="og:updated_time" content="2019-07-31T21:27:29.505Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React -- Lifecycle Methods">
 <meta name="twitter:description" content="Each component has several “lifecycle methods” that you can override to run code at particular times in the process. Methods prefixed with will are called right before something happens, and methods">
@@ -336,9 +336,7 @@
 <p>Each component has several “lifecycle methods” that you can override to run code at particular times in the process. Methods prefixed with will are called right before something happens, and methods prefixed with did are called right after something happens.</p>
 </blockquote>
 <p><img src="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/Screen%20Shot%202019-07-31%20at%2010.59.05.png" alt="diagram"></p>
-<p><strong>Mounting</strong></p>
-<hr>
-<ul>
+<h2 id="Mounting"><a href="#Mounting" class="headerlink" title="Mounting"></a><strong>Mounting</strong></h2><ul>
 <li><p>Before render(), componentWillMount() will be executed.</p>
 </li>
 <li><p>After render(), componentDidMount() will be executed.</p>
@@ -349,9 +347,7 @@
 <li><p>When render() is executed again, componentWillMount() and componentDidMount() don’t work.</p>
 </li>
 </ul>
-<p><strong>Updation</strong></p>
-<hr>
-<ul>
+<h2 id="Updation"><a href="#Updation" class="headerlink" title="Updation"></a><strong>Updation</strong></h2><ul>
 <li><p>Common for props and state:</p>
 <ul>
 <li><p>shouldComponentUpdate(): return boolean value, run before updating. If return false, there is no update.</p>
@@ -380,9 +376,7 @@
 </ul>
 </li>
 </ul>
-<p><strong>Unmounting</strong></p>
-<hr>
-<ul>
+<h2 id="Unmounting"><a href="#Unmounting" class="headerlink" title="Unmounting"></a><strong>Unmounting</strong></h2><ul>
 <li>componentWillUnmount(): when this component is going to be removed.</li>
 </ul>
 
@@ -475,8 +469,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -529,6 +532,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mounting"><span class="nav-number">1.</span> <span class="nav-text">Mounting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Updation"><span class="nav-number">2.</span> <span class="nav-text">Updation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unmounting"><span class="nav-number">3.</span> <span class="nav-text">Unmounting</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
