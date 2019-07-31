@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="React use virtual DOM to re-render which is really efficient  Rebuild DOM  State(data) JSX template Generated DOM from state and JSX template State or props changed   New state and data formed DOM to">
+<meta name="description" content="React use virtual DOM to re-render which is really efficient  Rebuild DOM State(data) JSX template Generated DOM from state and JSX template State or props changed   New state and data formed DOM to">
 <meta name="keywords" content="React">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React - Virtual DOM">
 <meta property="og:url" content="http://yoursite.com/2019/07/30/React-Virtual-DOM/index.html">
 <meta property="og:site_name" content="Koko is Koding">
-<meta property="og:description" content="React use virtual DOM to re-render which is really efficient  Rebuild DOM  State(data) JSX template Generated DOM from state and JSX template State or props changed   New state and data formed DOM to">
+<meta property="og:description" content="React use virtual DOM to re-render which is really efficient  Rebuild DOM State(data) JSX template Generated DOM from state and JSX template State or props changed   New state and data formed DOM to">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/public/images/level.png">
 <meta property="og:image" content="http://yoursite.com/public/images/keys.png">
-<meta property="og:updated_time" content="2019-07-31T15:30:42.962Z">
+<meta property="og:updated_time" content="2019-07-31T15:48:01.608Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React - Virtual DOM">
-<meta name="twitter:description" content="React use virtual DOM to re-render which is really efficient  Rebuild DOM  State(data) JSX template Generated DOM from state and JSX template State or props changed   New state and data formed DOM to">
+<meta name="twitter:description" content="React use virtual DOM to re-render which is really efficient  Rebuild DOM State(data) JSX template Generated DOM from state and JSX template State or props changed   New state and data formed DOM to">
 <meta name="twitter:image" content="http://yoursite.com/public/images/level.png">
 
 
@@ -336,16 +336,15 @@
         <blockquote>
 <p>React use virtual DOM to re-render which is really efficient</p>
 </blockquote>
-<p><strong>Rebuild DOM</strong></p>
-<ol>
+<h2 id="Rebuild-DOM"><a href="#Rebuild-DOM" class="headerlink" title="Rebuild DOM"></a><strong>Rebuild DOM</strong></h2><ol>
 <li>State(data)</li>
 <li>JSX template</li>
 <li>Generated DOM from state and JSX template</li>
 <li>State or props changed  </li>
 <li>New state and data formed DOM to substitute old DOM  </li>
 </ol>
-<h2 id="Defect-Inefficient"><a href="#Defect-Inefficient" class="headerlink" title="Defect: Inefficient  "></a><em>Defect: Inefficient</em>  </h2><p><strong>Improvement</strong></p>
-<ol>
+<p><em>Defect: Inefficient</em>  </p>
+<h2 id="Improvement"><a href="#Improvement" class="headerlink" title="Improvement"></a><strong>Improvement</strong></h2><ol>
 <li>State</li>
 <li>JSX template</li>
 <li>Generated DOM from state and JSX template</li>
@@ -355,8 +354,8 @@
 <li>Found that the content of input changed</li>
 <li>Substituted input in original DOM with new input</li>
 </ol>
-<h2 id="Defect-Still-inefficient-because-we-compared-new-DOM-with-the-original-one"><a href="#Defect-Still-inefficient-because-we-compared-new-DOM-with-the-original-one" class="headerlink" title="Defect: Still inefficient because we compared new DOM with the original one"></a><em>Defect:</em> Still inefficient because we compared new DOM with the original one</h2><p><strong>React Scheme</strong></p>
-<ol>
+<p><em>Defect:</em> Still inefficient because we compared new DOM with the original one</p>
+<h2 id="React-Scheme"><a href="#React-Scheme" class="headerlink" title="React Scheme"></a><strong>React Scheme</strong></h2><ol>
 <li><p>State</p>
 </li>
 <li><p>JSX template</p>
@@ -364,19 +363,15 @@
 <li><p>Generated virtual DOM( JS object to describe real DOM ) from state and JSX template</p>
 </li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'div'</span>,&#123;<span class="attr">id</span>: <span class="string">'abc'</span>&#125;,[<span class="string">'span'</span>,&#123;&#125;,<span class="string">'Hello, Koko'</span>]]</span><br><span class="line">&lt;div id=<span class="string">'abc'</span>&gt;</span><br><span class="line">  &lt;span&gt;Hello, Koko&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br><span class="line">[<span class="string">'div'</span>,&#123;<span class="attr">id</span>: <span class="string">'abc'</span>&#125;,[<span class="string">'span'</span>,&#123;&#125;,<span class="string">'Bye, Koko'</span>]]</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'div'</span>,&#123;<span class="attr">id</span>: <span class="string">'abc'</span>&#125;,[<span class="string">'span'</span>,&#123;&#125;,<span class="string">'Hello, Koko'</span>]]</span><br><span class="line">&lt;div id=<span class="string">'abc'</span>&gt;&lt;span&gt;Hello, Koko&lt;/span&gt;&lt;/div&gt;</span><br><span class="line">[<span class="string">'div'</span>,&#123;<span class="attr">id</span>: <span class="string">'abc'</span>&#125;,[<span class="string">'span'</span>,&#123;&#125;,<span class="string">'Bye, Koko'</span>]]</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">return &lt;div&gt;&lt;span&gt;item&lt;/span&gt;&lt;/div&gt;</span><br><span class="line">return React.createElement(&apos;div&apos;,&#123;&#125;,React.createElement(&apos;span&apos;,&#123;&#125;,&apos;item&apos;));</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> &lt;div&gt;&lt;span&gt;item&lt;/span&gt;&lt;/div&gt;</span><br><span class="line"><span class="keyword">return</span> React.createElement(<span class="string">'div'</span>,&#123;&#125;,React.createElement(<span class="string">'span'</span>,&#123;&#125;,<span class="string">'item'</span>));</span><br></pre></td></tr></table></figure>
 
-<hr>
-<p><strong>Advantage</strong></p>
-<ol>
+<h2 id="Advantage"><a href="#Advantage" class="headerlink" title="Advantage"></a><strong>Advantage</strong></h2><ol>
 <li>More efficient</li>
 <li>Help to develop cross-platform application</li>
 </ol>
-<hr>
-<p><strong>Diff Algorithm</strong>: DOM comparison</p>
-<ul>
+<h2 id="Diff-Algorithm-DOM-comparison"><a href="#Diff-Algorithm-DOM-comparison" class="headerlink" title="Diff Algorithm: DOM comparison"></a><strong>Diff Algorithm</strong>: DOM comparison</h2><ul>
 <li><p>Principle: Compare the same level, one we found difference, stop comparing and generated new DOM to replace all below-levels DOM</p>
 <p><img src="/public/images/level.png" alt="img"></p>
 </li>
@@ -556,7 +551,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Defect-Inefficient"><span class="nav-number">1.</span> <span class="nav-text">Defect: Inefficient  </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Defect-Still-inefficient-because-we-compared-new-DOM-with-the-original-one"><span class="nav-number">2.</span> <span class="nav-text">Defect: Still inefficient because we compared new DOM with the original one</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Rebuild-DOM"><span class="nav-number">1.</span> <span class="nav-text">Rebuild DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Improvement"><span class="nav-number">2.</span> <span class="nav-text">Improvement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-Scheme"><span class="nav-number">3.</span> <span class="nav-text">React Scheme</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advantage"><span class="nav-number">4.</span> <span class="nav-text">Advantage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Diff-Algorithm-DOM-comparison"><span class="nav-number">5.</span> <span class="nav-text">Diff Algorithm: DOM comparison</span></a></li></ol></div>
             
 
           </div>
