@@ -262,6 +262,155 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/03/Redux-Summary/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Koko Li">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Koko is Koding">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/03/Redux-Summary/" itemprop="url">Redux -- Summary</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-03T10:53:35-07:00">
+                2019-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Three-Basic-Principles"><a href="#Three-Basic-Principles" class="headerlink" title="Three Basic Principles"></a><strong>Three Basic Principles</strong></h2><ol>
+<li><p>Store should be unique</p>
+</li>
+<li><p>Only store can change its state (Reducer can access state but not change state)</p>
+</li>
+<li><p>Reducer must be a pure function, which is a function that has the following properties: Its return value is the same for the same arguments. Its evaluation has no side effects.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (state=defaultState,action)=&gt;&#123;</span><br><span class="line">    <span class="keyword">if</span>(action.type===CHANGE_INPUT_VALUE)&#123;</span><br><span class="line">        <span class="keyword">const</span> newState=<span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(state));</span><br><span class="line">        newState.inputValue=action.value;</span><br><span class="line">        <span class="keyword">return</span> newState;</span><br><span class="line">    &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>When we have fixed state and action passed in, then newState must be fixed.</p>
+</li>
+<li><p>We don’t change state but edit newState so there is no side effects.</p>
+</li>
+<li><p>Counter-example:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">newState.inputValue=<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br></pre></td></tr></table></figure>
+
+<p>Then newState would change follow the date so this is not fixed.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">state.inputValue=action.value;</span><br></pre></td></tr></table></figure>
+
+<p>We changed state so there is side effect.</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="Core-API"><a href="#Core-API" class="headerlink" title="Core API"></a><strong>Core API</strong></h2><ul>
+<li>createStore: create a store</li>
+<li>store.dispatch: send action to store</li>
+<li>store.getState: get all state from store</li>
+<li>store.subsribe: once store changed, component will know the change.</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/Redux-Redux-Workflow/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -939,7 +1088,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

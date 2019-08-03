@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Redux,">
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="Always koding.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Koko is Koding">
-<meta property="og:url" content="http://yoursite.com/tags/Redux/index.html">
+<meta name="description" content="Three Basic Principles Store should be unique  Only store can change its state (Reducer can access state but not change state)  Reducer must be a pure function, which is a function that has the follow">
+<meta name="keywords" content="Redux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redux -- Summary">
+<meta property="og:url" content="http://yoursite.com/2019/08/03/Redux-Summary/index.html">
 <meta property="og:site_name" content="Koko is Koding">
-<meta property="og:description" content="Always koding.">
+<meta property="og:description" content="Three Basic Principles Store should be unique  Only store can change its state (Reducer can access state but not change state)  Reducer must be a pure function, which is a function that has the follow">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-03T18:11:54.074Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Koko is Koding">
-<meta name="twitter:description" content="Always koding.">
+<meta name="twitter:title" content="Redux -- Summary">
+<meta name="twitter:description" content="Three Basic Principles Store should be unique  Only store can change its state (Reducer can access state but not change state)  Reducer must be a pure function, which is a function that has the follow">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Redux/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/03/Redux-Summary/">
 
 
 
 
 
-  <title>Tag: Redux | Koko is Koding</title>
+  <title>Redux -- Summary | Koko is Koding</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -247,78 +249,176 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Redux<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/03/Redux-Summary/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Koko Li">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Koko is Koding">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/08/03/Redux-Summary/" itemprop="url">
-              
-                <span itemprop="name">Redux -- Summary</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Redux -- Summary</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-03T10:53:35-07:00" content="2019-08-03">
-          08-03
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-03T10:53:35-07:00">
+                2019-08-03
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h2 id="Three-Basic-Principles"><a href="#Three-Basic-Principles" class="headerlink" title="Three Basic Principles"></a><strong>Three Basic Principles</strong></h2><ol>
+<li><p>Store should be unique</p>
+</li>
+<li><p>Only store can change its state (Reducer can access state but not change state)</p>
+</li>
+<li><p>Reducer must be a pure function, which is a function that has the following properties: Its return value is the same for the same arguments. Its evaluation has no side effects.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (state=defaultState,action)=&gt;&#123;</span><br><span class="line">    <span class="keyword">if</span>(action.type===CHANGE_INPUT_VALUE)&#123;</span><br><span class="line">        <span class="keyword">const</span> newState=<span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(state));</span><br><span class="line">        newState.inputValue=action.value;</span><br><span class="line">        <span class="keyword">return</span> newState;</span><br><span class="line">    &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/07/31/Redux-Redux-Workflow/" itemprop="url">
-              
-                <span itemprop="name">Redux -- Redux Workflow</span>
-              
-            </a>
-        
-      </h2>
+<ul>
+<li><p>When we have fixed state and action passed in, then newState must be fixed.</p>
+</li>
+<li><p>We don’t change state but edit newState so there is no side effects.</p>
+</li>
+<li><p>Counter-example:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">newState.inputValue=<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br></pre></td></tr></table></figure>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-31T21:05:21-07:00" content="2019-07-31">
-          07-31
-        </time>
-      </div>
+<p>Then newState would change follow the date so this is not fixed.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">state.inputValue=action.value;</span><br></pre></td></tr></table></figure>
 
-    </header>
-  </article>
-
+<p>We changed state so there is side effect.</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="Core-API"><a href="#Core-API" class="headerlink" title="Core API"></a><strong>Core API</strong></h2><ul>
+<li>createStore: create a store</li>
+<li>store.dispatch: send action to store</li>
+<li>store.getState: get all state from store</li>
+<li>store.subsribe: once store changed, component will know the change.</li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redux/" rel="tag"># Redux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/31/Redux-Redux-Workflow/" rel="next" title="Redux -- Redux Workflow">
+                <i class="fa fa-chevron-left"></i> Redux -- Redux Workflow
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -326,6 +426,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -346,8 +450,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -400,6 +513,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Three-Basic-Principles"><span class="nav-number">1.</span> <span class="nav-text">Three Basic Principles</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Core-API"><span class="nav-number">2.</span> <span class="nav-text">Core API</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -533,6 +662,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
