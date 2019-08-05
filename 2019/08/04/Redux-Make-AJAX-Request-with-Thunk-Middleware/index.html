@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="React,">
+  <meta name="keywords" content="Redux,">
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="Each component has several “lifecycle methods” that you can override to run code at particular times in the process. Methods prefixed with will are called right before something happens, and methods">
-<meta name="keywords" content="React">
+<meta name="description" content="After we use redux thunk, we can return a function in action. Set up1234567891011import &amp;#123; createStore, applyMiddleware, compose &amp;#125; from&apos;redux&apos;import reducer from &apos;./reducer&apos;import thunk from">
+<meta name="keywords" content="Redux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React -- Lifecycle Methods">
-<meta property="og:url" content="http://yoursite.com/2019/07/31/React-Lifecycle-Methods/index.html">
+<meta property="og:title" content="Redux -- Make AJAX Request With Thunk Middleware">
+<meta property="og:url" content="http://yoursite.com/2019/08/04/Redux-Make-AJAX-Request-with-Thunk-Middleware/index.html">
 <meta property="og:site_name" content="Koko is Koding">
-<meta property="og:description" content="Each component has several “lifecycle methods” that you can override to run code at particular times in the process. Methods prefixed with will are called right before something happens, and methods">
+<meta property="og:description" content="After we use redux thunk, we can return a function in action. Set up1234567891011import &amp;#123; createStore, applyMiddleware, compose &amp;#125; from&apos;redux&apos;import reducer from &apos;./reducer&apos;import thunk from">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/Screen%20Shot%202019-07-31%20at%2010.59.05.png">
-<meta property="og:updated_time" content="2019-07-31T21:30:04.408Z">
+<meta property="og:updated_time" content="2019-08-05T04:31:34.874Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React -- Lifecycle Methods">
-<meta name="twitter:description" content="Each component has several “lifecycle methods” that you can override to run code at particular times in the process. Methods prefixed with will are called right before something happens, and methods">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/Screen%20Shot%202019-07-31%20at%2010.59.05.png">
+<meta name="twitter:title" content="Redux -- Make AJAX Request With Thunk Middleware">
+<meta name="twitter:description" content="After we use redux thunk, we can return a function in action. Set up1234567891011import &amp;#123; createStore, applyMiddleware, compose &amp;#125; from&apos;redux&apos;import reducer from &apos;./reducer&apos;import thunk from">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/31/React-Lifecycle-Methods/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/04/Redux-Make-AJAX-Request-with-Thunk-Middleware/">
 
 
 
 
 
-  <title>React -- Lifecycle Methods | Koko is Koding</title>
+  <title>Redux -- Make AJAX Request With Thunk Middleware | Koko is Koding</title>
   
 
 
@@ -265,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/React-Lifecycle-Methods/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Redux-Make-AJAX-Request-with-Thunk-Middleware/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Koko Li">
@@ -282,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">React -- Lifecycle Methods</h1>
+          <h1 class="post-title" itemprop="name headline">Redux -- Make AJAX Request With Thunk Middleware</h1>
         
 
         <div class="post-meta">
@@ -294,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-31T10:23:31-07:00">
-                2019-07-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T11:40:55-07:00">
+                2019-08-04
               </time>
             
 
@@ -332,50 +330,13 @@
       
 
       
-        <blockquote>
-<p>Each component has several “lifecycle methods” that you can override to run code at particular times in the process. Methods prefixed with will are called right before something happens, and methods prefixed with did are called right after something happens.</p>
-</blockquote>
-<p><img src="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/Screen%20Shot%202019-07-31%20at%2010.59.05.png" alt="diagram"></p>
-<h2 id="Mounting"><a href="#Mounting" class="headerlink" title="Mounting"></a><strong>Mounting</strong></h2><ul>
-<li>Before render(), componentWillMount() will be executed.</li>
-<li>After render(), componentDidMount() will be executed.<ul>
-<li>Ajax request can be set in componentDidMount()</li>
-</ul>
-</li>
-<li>When render() is executed again, componentWillMount() and componentDidMount() don’t work.</li>
-</ul>
-<h2 id="Updation"><a href="#Updation" class="headerlink" title="Updation"></a><strong>Updation</strong></h2><ul>
-<li><p>Common for props and state:</p>
-<ul>
-<li><p>shouldComponentUpdate(): return boolean value, run before updating. If return false, there is no update.</p>
-<ul>
-<li><p>Application: when we don’t want the child component to render follow the parent component since there is no content updated, we can overwrite this method and return false;</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">shouldComponentUpdate(nextProps,nextState)&#123;</span><br><span class="line">  <span class="keyword">if</span>(nextProps.content!==<span class="keyword">this</span>.props.content)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>componentWillUpdate(): run after shouldComponentUpdate() return true.</p>
-</li>
-<li><p>render(): updating the data on the page.</p>
-</li>
-<li><p>componentDidUpdate(): after render() finished.</p>
-</li>
-</ul>
-</li>
-<li><p>Special for props:</p>
-<ul>
-<li>componentWillReceiveProps(): <ol>
-<li>One component should receive parameters from parent component.</li>
-<li>If this component doesn’t exist in the parent component, then this method will not be executed.</li>
-<li>If this component already exist in the parent component, then it works.</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Unmounting"><a href="#Unmounting" class="headerlink" title="Unmounting"></a><strong>Unmounting</strong></h2><ul>
-<li>componentWillUnmount(): when this component is going to be removed.</li>
-</ul>
+        <p>After we use redux thunk, we can return a function in action.</p>
+<h2 id="Set-up"><a href="#Set-up" class="headerlink" title="Set up"></a><strong>Set up</strong></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createStore, applyMiddleware, compose &#125; <span class="keyword">from</span><span class="string">'redux'</span></span><br><span class="line"><span class="keyword">import</span> reducer <span class="keyword">from</span> <span class="string">'./reducer'</span></span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">from</span> <span class="string">'redux-thunk'</span></span><br><span class="line"><span class="keyword">const</span> composeEnhancers = <span class="built_in">window</span>.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   </span><br><span class="line">    <span class="built_in">window</span>.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(&#123;&#125;) : compose;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> enhancer = composeEnhancers(</span><br><span class="line">    applyMiddleware(thunk)</span><br><span class="line">);</span><br><span class="line"><span class="keyword">const</span> store = createStore(reducer, enhancer);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Write-Action-in-actionCreator-js"><a href="#Write-Action-in-actionCreator-js" class="headerlink" title="Write Action in actionCreator.js "></a><strong>Write Action in actionCreator.js</strong> </h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getTodoList = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">dispatch</span>) =&gt;</span> &#123;</span><br><span class="line">        axios.get(<span class="string">'/list.json'</span>).then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line">            <span class="keyword">const</span> data = res.data; <span class="comment">//get data</span></span><br><span class="line">            <span class="keyword">const</span> action = initListAction(data); <span class="comment">//update data in store through action</span></span><br><span class="line">            dispatch(action);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Call-This-Action"><a href="#Call-This-Action" class="headerlink" title="Call This Action"></a><strong>Call This Action</strong></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">componentDidMount()&#123;</span><br><span class="line">        <span class="keyword">const</span> action = getTodoList();<span class="comment">//getTodoList() return a function not an object</span></span><br><span class="line">        store.dispatch(action);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -393,7 +354,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/React/" rel="tag"># React</a>
+            <a href="/tags/Redux/" rel="tag"># Redux</a>
           
         </div>
       
@@ -406,8 +367,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/31/React-Virtual-DOM/" rel="next" title="React -- Virtual DOM">
-                <i class="fa fa-chevron-left"></i> React -- Virtual DOM
+              <a href="/2019/08/03/Redux-Summary/" rel="next" title="Redux -- Summary">
+                <i class="fa fa-chevron-left"></i> Redux -- Summary
               </a>
             
           </div>
@@ -415,10 +376,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/31/Redux-Redux-Workflow/" rel="prev" title="Redux -- Redux Workflow">
-                Redux -- Redux Workflow <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -543,7 +500,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mounting"><span class="nav-number">1.</span> <span class="nav-text">Mounting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Updation"><span class="nav-number">2.</span> <span class="nav-text">Updation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unmounting"><span class="nav-number">3.</span> <span class="nav-text">Unmounting</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-up"><span class="nav-number">1.</span> <span class="nav-text">Set up</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Write-Action-in-actionCreator-js"><span class="nav-number">2.</span> <span class="nav-text">Write Action in actionCreator.js </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Call-This-Action"><span class="nav-number">3.</span> <span class="nav-text">Call This Action</span></a></li></ol></div>
             
 
           </div>
