@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Debug,">
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="Always koding.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Koko is Koding">
-<meta property="og:url" content="http://yoursite.com/tags/styled-component/index.html">
+<meta name="description" content="Keep a debugging process when I want to split code in store.  In large web applications, it is often desirable to split up the app code into multiple JS bundles that can be loaded on-demand. This stra">
+<meta name="keywords" content="Debug">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Debug Notes -- Splitting Reducers">
+<meta property="og:url" content="http://yoursite.com/2019/08/07/Debug-Notes-Splitting-Reducers/index.html">
 <meta property="og:site_name" content="Koko is Koding">
-<meta property="og:description" content="Always koding.">
+<meta property="og:description" content="Keep a debugging process when I want to split code in store.  In large web applications, it is often desirable to split up the app code into multiple JS bundles that can be loaded on-demand. This stra">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-07T22:27:14.152Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Koko is Koding">
-<meta name="twitter:description" content="Always koding.">
+<meta name="twitter:title" content="Debug Notes -- Splitting Reducers">
+<meta name="twitter:description" content="Keep a debugging process when I want to split code in store.  In large web applications, it is often desirable to split up the app code into multiple JS bundles that can be loaded on-demand. This stra">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/styled-component/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/07/Debug-Notes-Splitting-Reducers/">
 
 
 
 
 
-  <title>Tag: styled-component | Koko is Koding</title>
+  <title>Debug Notes -- Splitting Reducers | Koko is Koding</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -247,52 +249,164 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>styled-component<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/Debug-Notes-Splitting-Reducers/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Koko Li">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Koko is Koding">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/08/05/API-injectGlobal-is-Deprecated/" itemprop="url">
-              
-                <span itemprop="name">API -- injectGlobal Is Deprecated</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Debug Notes -- Splitting Reducers</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-05T20:15:10-07:00" content="2019-08-05">
-          08-05
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-07T15:08:42-07:00">
+                2019-08-07
+              </time>
+            
 
-    </header>
-  </article>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Keep a debugging process when I want to split code in store.</p>
+<blockquote>
+<p>In large web applications, it is often desirable to split up the app code into multiple JS bundles that can be loaded on-demand. This strategy, called ‘code splitting’, helps to increase performance of your application by reducing the size of the initial JS payload that must be fetched.</p>
+</blockquote>
+<p>New a folder, say <em>header</em>, under <em>src</em> ,and then new another folder, <em>store</em>. In store, create <em>index.js</em> and <em>reducer.js</em>.</p>
+<p>In <em>header/store/reducer.js</em>, just keep state and updating logic of header part. </p>
+<p>In <em>header/store/index.js</em>, import reducer from <em>header/store/reducer.js</em> and export!</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> reducer <span class="keyword">from</span> <span class="string">'./reducer'</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> actionCreators <span class="keyword">from</span> <span class="string">'./actionCreators'</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> constants <span class="keyword">from</span> <span class="string">'./constants'</span></span><br><span class="line"><span class="keyword">export</span> &#123;reducer, actionCreators, constants&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>I was stuck by a bug here because I wrote the last line as</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;reducer, actionCreators, constants&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>In <em>src/store/reducer.js</em>, combine reducers by redux and export.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;reducer <span class="keyword">as</span> headerReducer&#125; <span class="keyword">from</span> <span class="string">'../common/header/store'</span></span><br><span class="line"><span class="keyword">const</span> reducer = combineReducers(&#123;</span><br><span class="line">    header: headerReducer</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> reducer</span><br></pre></td></tr></table></figure>
 
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Debug/" rel="tag"># Debug</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/07/React-Immutable-js-Notes/" rel="next" title="React -- Immutable.js Notes">
+                <i class="fa fa-chevron-left"></i> React -- Immutable.js Notes
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -300,6 +414,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -507,6 +625,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
