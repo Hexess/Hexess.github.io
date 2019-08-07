@@ -262,6 +262,151 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/React-Immutable-js-Notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Koko Li">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Koko is Koding">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/07/React-Immutable-js-Notes/" itemprop="url">React -- Immutable.js Notes</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-07T11:47:02-07:00">
+                2019-08-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Immutable data cannot be changed once created, leading to much simpler application development, no defensive copying, and enabling advanced memoization and change detection techniques with simple logic.</p>
+</blockquote>
+<p>We can import immutable.js in our react projects since in react, only store can edit or update state. To make sure that we don’t change data directly out of state, we can use Immutable.js to make it easier.</p>
+<p>Immutable.js has some APIs for us to use. Right here, I just keep examples that how to combine Immutable.js with AJAX request in react.</p>
+<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a><strong>Background</strong></h2><p>When the mouse focus on <em>NavSearch</em>, we make Ajax request to get data from ‘/api/headerList.json’ and show on <em>SearchInfo</em>.</p>
+<h2 id="Define-a-function"><a href="#Define-a-function" class="headerlink" title="Define a function"></a><strong>Define a function</strong></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">getListArea=<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(<span class="keyword">this</span>.props.focused)&#123;</span><br><span class="line">           <span class="keyword">return</span>(</span><br><span class="line">               &lt;SearchInfo&gt;</span><br><span class="line">                   &lt;SearchInfoTitle&gt;</span><br><span class="line">                       Trending Searches</span><br><span class="line">                       &lt;SearchInfoSwitch&gt;Refresh&lt;<span class="regexp">/SearchInfoSwitch&gt;</span></span><br><span class="line"><span class="regexp">                   &lt;/</span>SearchInfoTitle&gt;</span><br><span class="line">                   &lt;SearchInfoList&gt;</span><br><span class="line">                       &#123;<span class="keyword">this</span>.props.list.map(<span class="function">(<span class="params">item</span>)=&gt;</span>&#123;</span><br><span class="line">                           <span class="keyword">return</span> &lt;SearchInfoItem key=&#123;item&#125;&gt;&#123;item&#125;&lt;/SearchInfoItem&gt;</span><br><span class="line">                       &#125;)&#125;</span><br><span class="line">                   &lt;<span class="regexp">/SearchInfoList&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>SearchInfo&gt;</span><br><span class="line">           )</span><br><span class="line">       &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>When <em>focused</em> becomes true, <em>SearchInfo</em> will show, then we loop items in list and show in <em>SearchInfoList</em></p>
+<h2 id="Call-this-function"><a href="#Call-this-function" class="headerlink" title="Call this function"></a><strong>Call this function</strong></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;SearchWrapper&gt;</span><br><span class="line">                            &lt;CSSTransition</span><br><span class="line">                                <span class="keyword">in</span>=&#123;<span class="keyword">this</span>.props.focused&#125;</span><br><span class="line">                                timeout=&#123;<span class="number">200</span>&#125;</span><br><span class="line">                                classNames=<span class="string">"slide"</span></span><br><span class="line">                            &gt;</span><br><span class="line">                            &lt;NavSearch </span><br><span class="line">                                className=&#123;<span class="keyword">this</span>.props.focused?<span class="string">'focused'</span>:<span class="string">''</span>&#125; </span><br><span class="line">                                onFocus=&#123;<span class="keyword">this</span>.props.handleInputFocus&#125;</span><br><span class="line">                                onBlur=&#123;<span class="keyword">this</span>.props.handleInputBlur&#125;</span><br><span class="line">                            &gt;&lt;/NavSearch&gt;</span><br><span class="line">                            &lt;<span class="regexp">/CSSTransition&gt;</span></span><br><span class="line"><span class="regexp">                            &lt;span className=&#123;this.props.focused?'iconfont focused':'iconfont'&#125;&gt;&amp;#xe867;&lt;/</span>span&gt;</span><br><span class="line">                            &#123;<span class="keyword">this</span>.getListArea(<span class="keyword">this</span>.props.focused?<span class="literal">true</span>:<span class="literal">false</span>)&#125;</span><br><span class="line">                        &lt;<span class="regexp">/SearchWrapper&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Connect-store-with-this-component"><a href="#Connect-store-with-this-component" class="headerlink" title="Connect store with this component"></a><strong>Connect store with this component</strong></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mapStateToProps=<span class="function">(<span class="params">state</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        focused:state.getIn([<span class="string">'header'</span>,<span class="string">'focused'</span>]),<span class="comment">//get focused under header</span></span><br><span class="line">        list:state.getIn([<span class="string">'header'</span>,<span class="string">'list'</span>])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> mapDispatchToProps=<span class="function">(<span class="params">dispatch</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        handleInputFocus()&#123;</span><br><span class="line">            dispatch(actionCreators.getList());</span><br><span class="line">            dispatch(actionCreators.searchFocus());</span><br><span class="line">        &#125;,</span><br><span class="line">        handleInputBlur()&#123;</span><br><span class="line">            dispatch(actionCreators.searchBlur())</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Get-data-by-axios"><a href="#Get-data-by-axios" class="headerlink" title="Get data by axios"></a><strong>Get data by axios</strong></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></span><br><span class="line"><span class="keyword">import</span> &#123;fromJS&#125; <span class="keyword">from</span> <span class="string">'immutable'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> changeList=<span class="function">(<span class="params">data</span>)=&gt;</span>(&#123;</span><br><span class="line">    type:constants.CHANGE_LIST,</span><br><span class="line">    data:fromJS(data)</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//return a function</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getList=<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">dispatch</span>)=&gt;</span>&#123;</span><br><span class="line">        axios.get(<span class="string">'/api/headerList.json'</span>).then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line">            <span class="keyword">const</span> data=res.data;</span><br><span class="line">            dispatch(changeList(data.data));</span><br><span class="line">        &#125;).catch(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'error!'</span>)</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>After we get the data, we need to update list in state, so we dispatch an action to store.</p>
+<p>Use <em>fromJS(data)</em> to make data immutable. </p>
+<ul>
+<li>!!!We have to make data immutable since we need to use state.set() from immutable.js to update state.</li>
+</ul>
+<h2 id="Update-list-in-state"><a href="#Update-list-in-state" class="headerlink" title="Update list in state"></a><strong>Update list in state</strong></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(action.type===constants.CHANGE_LIST)&#123;</span><br><span class="line">        <span class="keyword">return</span> state.set(<span class="string">'list'</span>,action.data)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Note that the first parameter in state.set() should be packed by ‘’</li>
+<li>Since list is immutable data before change, we need to make sure action.data be immutable and we made it in the last step!</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/API-injectGlobal-is-Deprecated/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1343,7 +1488,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1356,7 +1501,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
