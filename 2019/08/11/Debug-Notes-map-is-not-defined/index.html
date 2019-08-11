@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="React,">
+  <meta name="keywords" content="debug,">
 
 
 
@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="React use virtual DOM to re-render which is really efficient  Rebuild DOM State(data) JSX template Generated DOM from state and JSX template State or props changed   New state and data formed DOM to">
-<meta name="keywords" content="React">
+<meta name="description" content="I want to note a really stupid error cause by typo.  This is because this.props.list doesn’t get data correctly from state  Since in mapStateToProps, list doesn’t get data so there is no map method to">
+<meta name="keywords" content="debug">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React -- Virtual DOM">
-<meta property="og:url" content="http://yoursite.com/2019/07/31/React-Virtual-DOM/index.html">
+<meta property="og:title" content="Debug Notes -- Map Is Not Defined">
+<meta property="og:url" content="http://yoursite.com/2019/08/11/Debug-Notes-map-is-not-defined/index.html">
 <meta property="og:site_name" content="Koko is Koding">
-<meta property="og:description" content="React use virtual DOM to re-render which is really efficient  Rebuild DOM State(data) JSX template Generated DOM from state and JSX template State or props changed   New state and data formed DOM to">
+<meta property="og:description" content="I want to note a really stupid error cause by typo.  This is because this.props.list doesn’t get data correctly from state  Since in mapStateToProps, list doesn’t get data so there is no map method to">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/level.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/key.png">
-<meta property="og:updated_time" content="2019-07-31T17:25:09.358Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/error.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/code.png">
+<meta property="og:updated_time" content="2019-08-11T15:27:57.295Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React -- Virtual DOM">
-<meta name="twitter:description" content="React use virtual DOM to re-render which is really efficient  Rebuild DOM State(data) JSX template Generated DOM from state and JSX template State or props changed   New state and data formed DOM to">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/level.png">
+<meta name="twitter:title" content="Debug Notes -- Map Is Not Defined">
+<meta name="twitter:description" content="I want to note a really stupid error cause by typo.  This is because this.props.list doesn’t get data correctly from state  Since in mapStateToProps, list doesn’t get data so there is no map method to">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/error.png">
 
 
 
@@ -123,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/31/React-Virtual-DOM/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/11/Debug-Notes-map-is-not-defined/">
 
 
 
 
 
-  <title>React -- Virtual DOM | Koko is Koding</title>
+  <title>Debug Notes -- Map Is Not Defined | Koko is Koding</title>
   
 
 
@@ -266,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/React-Virtual-DOM/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/11/Debug-Notes-map-is-not-defined/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Koko Li">
@@ -283,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">React -- Virtual DOM</h1>
+          <h1 class="post-title" itemprop="name headline">Debug Notes -- Map Is Not Defined</h1>
         
 
         <div class="post-meta">
@@ -295,8 +295,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-31T09:11:00-07:00">
-                2019-07-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-11T08:19:14-07:00">
+                2019-08-11
               </time>
             
 
@@ -333,76 +333,11 @@
       
 
       
-        <blockquote>
-<p>React use virtual DOM to re-render which is really efficient</p>
-</blockquote>
-<h2 id="Rebuild-DOM"><a href="#Rebuild-DOM" class="headerlink" title="Rebuild DOM"></a><strong>Rebuild DOM</strong></h2><ol>
-<li>State(data)</li>
-<li>JSX template</li>
-<li>Generated DOM from state and JSX template</li>
-<li>State or props changed  </li>
-<li>New state and data formed DOM to substitute old DOM  </li>
-</ol>
-<p><em>Defect: Inefficient</em>  </p>
-<h2 id="Improvement"><a href="#Improvement" class="headerlink" title="Improvement"></a><strong>Improvement</strong></h2><ol>
-<li>State</li>
-<li>JSX template</li>
-<li>Generated DOM from state and JSX template</li>
-<li>State or props changed</li>
-<li>New state and data formed DOM</li>
-<li>Compared new DOM(Document Fragment) and original DOM and find difference</li>
-<li>Found that the content of input changed</li>
-<li>Substituted input in original DOM with new input</li>
-</ol>
-<p><em>Defect:</em> Still inefficient because we compared new DOM with the original one</p>
-<h2 id="React-Scheme"><a href="#React-Scheme" class="headerlink" title="React Scheme"></a><strong>React Scheme</strong></h2><ol>
-<li><p>State</p>
-</li>
-<li><p>JSX template</p>
-</li>
-<li><p>Generated virtual DOM( JS object to describe real DOM ) from state and JSX template</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'div'</span>,&#123;<span class="attr">id</span>: <span class="string">'abc'</span>&#125;,[<span class="string">'span'</span>,&#123;&#125;,<span class="string">'Hello, Koko'</span>]]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Generated DOM according to virtual DOM</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">'abc'</span>&gt;</span><br><span class="line">  &lt;span&gt;Hello, Koko&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>State or props changed</p>
-</li>
-<li><p>Generated new virtual DOM from new state and JSX template(Efficient!)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'div'</span>,&#123;<span class="attr">id</span>: <span class="string">'abc'</span>&#125;,[<span class="string">'span'</span>,&#123;&#125;,<span class="string">'Bye, Koko'</span>]]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Compared new virtual DOM and the original one and found changes(Efficient!)</p>
-</li>
-<li><p>Changed the original DOM</p>
-<pre><code class="javascript"><span class="keyword">return</span> &lt;div&gt;&lt;span&gt;item&lt;/span&gt;&lt;/div&gt;
-<span class="keyword">return</span> React.createElement(<span class="string">'div'</span>,{},React.createElement(<span class="string">'span'</span>,{},<span class="string">'item'</span>));</code></pre>
-<blockquote>
-<p>The above two lines are same, the process is like:</p>
-<p>JSX -&gt; createElement -&gt; virtual DOM -&gt; DOM</p>
-</blockquote>
-</li>
-</ol>
-<h2 id="Advantage"><a href="#Advantage" class="headerlink" title="Advantage"></a><strong>Advantage</strong></h2><ol>
-<li>More efficient</li>
-<li>Help to develop cross-platform application  </li>
-</ol>
-<h2 id="Diff-Algorithm-DOM-comparison"><a href="#Diff-Algorithm-DOM-comparison" class="headerlink" title="Diff Algorithm: DOM comparison  "></a><strong>Diff Algorithm</strong>: DOM comparison  </h2><ul>
-<li><p>Principle: Compare the same level, one we found difference, stop comparing and generated new DOM to replace all below-levels DOM</p>
-<p><img src="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/level.png" alt="level comparing"></p>
-</li>
-<li><p>Advantages: Easy algorithm and fast speed</p>
-</li>
-<li><p>Keys:</p>
-<p><img src="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/key.png" alt="keys"></p>
-<ul>
-<li>Without keys: we can not connect the same layers directly, so we need two loops to compare each layer.</li>
-<li>With keys: like HashMap, we can easily compare the pairs(same layer) and find difference.<ul>
-<li>DO NOT use “index” as your key: since when you delete one item the indexes will be re-distributed to each existed items.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+        <p>I want to note a really stupid error cause by typo.</p>
+<p><img src="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/error.png" alt="img"></p>
+<p>This is because <em>this.props.list</em> doesn’t get data correctly from state</p>
+<p><img src="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/code.png" alt="img"></p>
+<p>Since in <em>mapStateToProps</em>, list doesn’t get data so there is no <em>map</em> method to use.</p>
 
       
     </div>
@@ -420,7 +355,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/React/" rel="tag"># React</a>
+            <a href="/tags/debug/" rel="tag"># debug</a>
           
         </div>
       
@@ -433,8 +368,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/28/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/08/07/Debug-Notes-Splitting-Reducers/" rel="next" title="Debug Notes -- Splitting Reducers">
+                <i class="fa fa-chevron-left"></i> Debug Notes -- Splitting Reducers
               </a>
             
           </div>
@@ -442,10 +377,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/31/React-Lifecycle-Methods/" rel="prev" title="React -- Lifecycle Methods">
-                React -- Lifecycle Methods <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -497,17 +428,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -560,22 +482,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Rebuild-DOM"><span class="nav-number">1.</span> <span class="nav-text">Rebuild DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Improvement"><span class="nav-number">2.</span> <span class="nav-text">Improvement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-Scheme"><span class="nav-number">3.</span> <span class="nav-text">React Scheme</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advantage"><span class="nav-number">4.</span> <span class="nav-text">Advantage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Diff-Algorithm-DOM-comparison"><span class="nav-number">5.</span> <span class="nav-text">Diff Algorithm: DOM comparison  </span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
