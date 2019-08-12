@@ -262,6 +262,130 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/12/React-how-to-insert-HTML-tag-in-string-content/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Koko Li">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Koko is Koding">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/12/React-how-to-insert-HTML-tag-in-string-content/" itemprop="url">React -- How to Insert HTML Tag in String Content</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-12T09:57:07-07:00">
+                2019-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> defaultState=fromJS(&#123;</span><br><span class="line">    title: <span class="string">'Jupiter’s Great Red Spot Is Behaving Strangely'</span>,</span><br><span class="line">    content: <span class="string">'&lt;img src="https://nerdist.com/wp-content/uploads/2019/08/planets-jupiter-img.width-2000-1200x676.jpg" alt=""/&gt;&lt;p&gt;If on a clear and starry night in mid-May you had trained a high-powered telescope on just the right part of Jupiter, you would have seen something very, very strange. The Great Red Spot, one of our solar system’s most famous features, would have appeared to be slowly unraveling. You would have seen the swirling storm system casting off ribbons of rose-colored gas like petals in the wind. It would have been beautiful.&lt;/p&gt;&lt;p&gt;Earlier this year, dozens of die-hard amateur astronomers across the globe began noticing that the Great Red Spot’s ordinarily ovoid figure looked distorted. By April, it seemed to be shedding red flakes. In May, that flaking grew so extreme that the spot looked as though it might disintegrate.&lt;/p&gt;'</span></span><br><span class="line">                </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>For such data, when we want to use <em>this.props.content</em> to show it and make HTML tags work, we can use <strong>dangerouslySetInnerHTML</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Content</span> <span class="attr">dangerouslySetInnerHTML</span>=<span class="string">&#123;&#123;__html:this.props.content&#125;&#125;/</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/11/Debug-Notes-import-connect-and-dispatch-action/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1513,195 +1637,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/React-Virtual-DOM/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Koko Li">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Koko is Koding">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/31/React-Virtual-DOM/" itemprop="url">React -- Virtual DOM</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-31T09:11:00-07:00">
-                2019-07-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>React use virtual DOM to re-render which is really efficient</p>
-</blockquote>
-<h2 id="Rebuild-DOM"><a href="#Rebuild-DOM" class="headerlink" title="Rebuild DOM"></a><strong>Rebuild DOM</strong></h2><ol>
-<li>State(data)</li>
-<li>JSX template</li>
-<li>Generated DOM from state and JSX template</li>
-<li>State or props changed  </li>
-<li>New state and data formed DOM to substitute old DOM  </li>
-</ol>
-<p><em>Defect: Inefficient</em>  </p>
-<h2 id="Improvement"><a href="#Improvement" class="headerlink" title="Improvement"></a><strong>Improvement</strong></h2><ol>
-<li>State</li>
-<li>JSX template</li>
-<li>Generated DOM from state and JSX template</li>
-<li>State or props changed</li>
-<li>New state and data formed DOM</li>
-<li>Compared new DOM(Document Fragment) and original DOM and find difference</li>
-<li>Found that the content of input changed</li>
-<li>Substituted input in original DOM with new input</li>
-</ol>
-<p><em>Defect:</em> Still inefficient because we compared new DOM with the original one</p>
-<h2 id="React-Scheme"><a href="#React-Scheme" class="headerlink" title="React Scheme"></a><strong>React Scheme</strong></h2><ol>
-<li><p>State</p>
-</li>
-<li><p>JSX template</p>
-</li>
-<li><p>Generated virtual DOM( JS object to describe real DOM ) from state and JSX template</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'div'</span>,&#123;<span class="attr">id</span>: <span class="string">'abc'</span>&#125;,[<span class="string">'span'</span>,&#123;&#125;,<span class="string">'Hello, Koko'</span>]]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Generated DOM according to virtual DOM</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">'abc'</span>&gt;</span><br><span class="line">  &lt;span&gt;Hello, Koko&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>State or props changed</p>
-</li>
-<li><p>Generated new virtual DOM from new state and JSX template(Efficient!)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'div'</span>,&#123;<span class="attr">id</span>: <span class="string">'abc'</span>&#125;,[<span class="string">'span'</span>,&#123;&#125;,<span class="string">'Bye, Koko'</span>]]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Compared new virtual DOM and the original one and found changes(Efficient!)</p>
-</li>
-<li><p>Changed the original DOM</p>
-<pre><code class="javascript"><span class="keyword">return</span> &lt;div&gt;&lt;span&gt;item&lt;/span&gt;&lt;/div&gt;
-<span class="keyword">return</span> React.createElement(<span class="string">'div'</span>,{},React.createElement(<span class="string">'span'</span>,{},<span class="string">'item'</span>));</code></pre>
-<blockquote>
-<p>The above two lines are same, the process is like:</p>
-<p>JSX -&gt; createElement -&gt; virtual DOM -&gt; DOM</p>
-</blockquote>
-</li>
-</ol>
-<h2 id="Advantage"><a href="#Advantage" class="headerlink" title="Advantage"></a><strong>Advantage</strong></h2><ol>
-<li>More efficient</li>
-<li>Help to develop cross-platform application  </li>
-</ol>
-<h2 id="Diff-Algorithm-DOM-comparison"><a href="#Diff-Algorithm-DOM-comparison" class="headerlink" title="Diff Algorithm: DOM comparison  "></a><strong>Diff Algorithm</strong>: DOM comparison  </h2><ul>
-<li><p>Principle: Compare the same level, one we found difference, stop comparing and generated new DOM to replace all below-levels DOM</p>
-<p><img src="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/level.png" alt="level comparing"></p>
-</li>
-<li><p>Advantages: Easy algorithm and fast speed</p>
-</li>
-<li><p>Keys:</p>
-<p><img src="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/key.png" alt="keys"></p>
-<ul>
-<li>Without keys: we can not connect the same layers directly, so we need two loops to compare each layer.</li>
-<li>With keys: like HashMap, we can easily compare the pairs(same layer) and find difference.<ul>
-<li>DO NOT use “index” as your key: since when you delete one item the indexes will be re-distributed to each existed items.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1754,7 +1689,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1767,7 +1702,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
