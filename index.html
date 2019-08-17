@@ -262,6 +262,166 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/17/Algorithms-Greedy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Koko Li">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Koko is Koding">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/17/Algorithms-Greedy/" itemprop="url">Algorithms -- Greedy</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T12:33:37-07:00">
+                2019-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>To be honest, I don’t like greedy.</p>
+<p>I always think the theory behind it is obvious and easy to understand but I never know how to apply it.</p>
+<p>This note is from <a href="https://web.archive.org/web/20160120093629/http://algobox.org/author/dietpepsi/" target="_blank" rel="noopener">dietpepsi</a>, and I add some my own comments in it.</p>
+<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a><strong>Problem</strong></h2><p>Given two arrays of length <code>m</code> and <code>n</code> with digits <code>0-9</code> representing two numbers. Create the maximum number of length <code>k &lt;= m + n</code> from digits of the two. The relative order of the digits from the same array must be preserved. Return an array of the <code>k</code> digits. You should try to optimize your time and space complexity.</p>
+<blockquote>
+<p>nums1 = <code>[3, 4, 6, 5]</code><br>nums2 = <code>[9, 1, 2, 5, 8, 3]</code><br>k = <code>5</code><br>return <code>[9, 8, 6, 5, 3]</code></p>
+</blockquote>
+<blockquote>
+<p>nums1 = <code>[6, 7]</code><br>nums2 = <code>[6, 0, 4]</code><br>k = <code>5</code><br>return <code>[6, 7, 6, 0, 4]</code></p>
+</blockquote>
+<blockquote>
+<p>nums1 = <code>[3, 9]</code><br>nums2 = <code>[8, 9]</code><br>k = <code>3</code><br>return <code>[9, 8, 9]</code></p>
+</blockquote>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a><strong>Solution</strong></h2><ul>
+<li><p>Easy Version I:</p>
+<p>Given one array of length <code>n</code>, create the maximum number of length <code>k</code>.</p>
+<p>The solution to this problem is Greedy with the help of stack. The recipe is as following</p>
+<blockquote>
+<ol>
+<li>Initialize a stack, we can use array to simulate it.</li>
+<li>If nums[i] is larger than the top of stack, i.e. stack[j-1] ,then we check how many numbers left in the array nums , which means we need to check if n-i&gt;k-j. If so, then we make j- - (Note this is a while loop).</li>
+</ol>
+</blockquote>
+<p>The time complexity is <code>O(N)</code> since each element is at most been pushed and popped once.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">int</span>[] maxArray(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)&#123;</span><br><span class="line">        <span class="keyword">int</span>[] ans=<span class="keyword">new</span> <span class="keyword">int</span>[k];</span><br><span class="line">        <span class="keyword">int</span> n=nums.length;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="keyword">while</span>(n-i&gt;k-j&amp;&amp;j&gt;<span class="number">0</span>&amp;&amp;ans[j-<span class="number">1</span>]&lt;nums[i])</span><br><span class="line">                j--;</span><br><span class="line">            <span class="keyword">if</span>(j&lt;k) ans[j++]=nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Easy Version II:</p>
+<p>Given two array of length <code>m</code> and <code>n</code>, create maximum number of length <code>k = m + n</code>.</p>
+<p>We have <code>k</code> decisions to make, each time will just need to decide <code>ans[i]</code> is from which of the two. It seems obvious, we should always choose the larger one right? And when we meet two equal numbers, then we need to see what behind the two to decide. </p>
+<blockquote>
+<p>nums1 = <code>[6, 7]</code><br>nums2 = <code>[6, 0, 4]</code><br>k = <code>5</code><br>ans = <code>[6, 7, 6, 0, 4]</code></p>
+</blockquote>
+<p> The procedure is like the merge in a merge sort. However due to the “look next until not equal”, the time complexity is O(MN).</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">int</span>[] merge(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2)&#123;</span><br><span class="line">        <span class="keyword">int</span> m=nums1.length,n=nums2.length;</span><br><span class="line">        <span class="keyword">int</span>[] ans=<span class="keyword">new</span> <span class="keyword">int</span>[m+n];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>,idx=<span class="number">0</span>;idx&lt;m+n;idx++)&#123;</span><br><span class="line">            ans[idx]=greater(nums1,nums2,i,j)?nums1[i++]:nums2[j++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">greater</span><span class="params">(<span class="keyword">int</span>[] nums1,<span class="keyword">int</span>[] nums2,<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;nums1.length&amp;&amp;j&lt;nums2.length&amp;&amp;nums1[i]==nums2[j])&#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> j==nums2.length||i&lt;nums1.length&amp;&amp;nums1[i]&gt;nums2[j];</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Final Version:</p>
+<p>First, we divide the <code>k</code> digits required into two parts, <code>i</code> and <code>k-i</code>. We then find the maximum number of length <code>i</code> in one array and the maximum number of length <code>k-i</code> in the other array using the algorithm in section 1. Now we combine the two results in to one array using the algorithm in section 2. After that we compare the result with the result we have and keep the larger one as final answer. The complexity is O((M+N)³)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] maxNumber(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2, <span class="keyword">int</span> k) &#123;</span><br><span class="line">        <span class="keyword">int</span> m=nums1.length,n=nums2.length;</span><br><span class="line">        <span class="keyword">int</span>[] ans=<span class="keyword">new</span> <span class="keyword">int</span>[k];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=Math.max(<span class="number">0</span>,k-n);i&lt;=k&amp;&amp;i&lt;=m;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span>[] candidate=merge(maxArray(nums1,i),maxArray(nums2,k-i));</span><br><span class="line">            ans=greater(ans,candidate,<span class="number">0</span>,<span class="number">0</span>)?ans:candidate;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/14/Algorithms-Binary-Indexed-Tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1449,155 +1609,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/03/Redux-Summary/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Koko Li">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Koko is Koding">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/03/Redux-Summary/" itemprop="url">Redux -- Summary</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-03T10:53:35-07:00">
-                2019-08-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Three-Basic-Principles"><a href="#Three-Basic-Principles" class="headerlink" title="Three Basic Principles"></a><strong>Three Basic Principles</strong></h2><ol>
-<li><p>Store should be unique</p>
-</li>
-<li><p>Only store can change its state (Reducer can access state but not change state)</p>
-</li>
-<li><p>Reducer must be a pure function, which is a function that has the following properties: Its return value is the same for the same arguments. Its evaluation has no side effects.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (state=defaultState,action)=&gt;&#123;</span><br><span class="line">    <span class="keyword">if</span>(action.type===CHANGE_INPUT_VALUE)&#123;</span><br><span class="line">        <span class="keyword">const</span> newState=<span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(state));</span><br><span class="line">        newState.inputValue=action.value;</span><br><span class="line">        <span class="keyword">return</span> newState;</span><br><span class="line">    &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>When we have fixed state and action passed in, then newState must be fixed.</p>
-</li>
-<li><p>We don’t change state but edit newState so there is no side effects.</p>
-</li>
-<li><p>Counter-example:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">newState.inputValue=<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br></pre></td></tr></table></figure>
-
-<p>Then newState would change follow the date so this is not fixed.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">state.inputValue=action.value;</span><br></pre></td></tr></table></figure>
-
-<p>We changed state so there is side effect.</p>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="Core-API"><a href="#Core-API" class="headerlink" title="Core API"></a><strong>Core API</strong></h2><ul>
-<li>createStore: create a store</li>
-<li>store.dispatch: send action to store</li>
-<li>store.getState: get all state from store</li>
-<li>store.subsribe: once store changed, component will know the change.</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1650,7 +1661,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1663,7 +1674,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

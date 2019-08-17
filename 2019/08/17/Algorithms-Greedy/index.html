@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="React,">
+  <meta name="keywords" content="greedy,">
 
 
 
@@ -79,21 +79,18 @@
 
 
 
-<meta name="description" content="React use virtual DOM to re-render which is really efficient  Rebuild DOM State(data) JSX template Generated DOM from state and JSX template State or props changed   New state and data formed DOM to">
-<meta name="keywords" content="React">
+<meta name="description" content="To be honest, I don’t like greedy. I always think the theory behind it is obvious and easy to understand but I never know how to apply it. This note is from dietpepsi, and I add some my own comments i">
+<meta name="keywords" content="greedy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React -- Virtual DOM">
-<meta property="og:url" content="http://yoursite.com/2019/07/31/React-Virtual-DOM/index.html">
+<meta property="og:title" content="Algorithms -- Greedy">
+<meta property="og:url" content="http://yoursite.com/2019/08/17/Algorithms-Greedy/index.html">
 <meta property="og:site_name" content="Koko is Koding">
-<meta property="og:description" content="React use virtual DOM to re-render which is really efficient  Rebuild DOM State(data) JSX template Generated DOM from state and JSX template State or props changed   New state and data formed DOM to">
+<meta property="og:description" content="To be honest, I don’t like greedy. I always think the theory behind it is obvious and easy to understand but I never know how to apply it. This note is from dietpepsi, and I add some my own comments i">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/level.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/key.png">
-<meta property="og:updated_time" content="2019-07-31T17:25:09.358Z">
+<meta property="og:updated_time" content="2019-08-17T19:58:34.466Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React -- Virtual DOM">
-<meta name="twitter:description" content="React use virtual DOM to re-render which is really efficient  Rebuild DOM State(data) JSX template Generated DOM from state and JSX template State or props changed   New state and data formed DOM to">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/level.png">
+<meta name="twitter:title" content="Algorithms -- Greedy">
+<meta name="twitter:description" content="To be honest, I don’t like greedy. I always think the theory behind it is obvious and easy to understand but I never know how to apply it. This note is from dietpepsi, and I add some my own comments i">
 
 
 
@@ -123,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/31/React-Virtual-DOM/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/17/Algorithms-Greedy/">
 
 
 
 
 
-  <title>React -- Virtual DOM | Koko is Koding</title>
+  <title>Algorithms -- Greedy | Koko is Koding</title>
   
 
 
@@ -266,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/React-Virtual-DOM/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/17/Algorithms-Greedy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Koko Li">
@@ -283,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">React -- Virtual DOM</h1>
+          <h1 class="post-title" itemprop="name headline">Algorithms -- Greedy</h1>
         
 
         <div class="post-meta">
@@ -295,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-31T09:11:00-07:00">
-                2019-07-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T12:33:37-07:00">
+                2019-08-17
               </time>
             
 
@@ -333,74 +330,45 @@
       
 
       
-        <blockquote>
-<p>React use virtual DOM to re-render which is really efficient</p>
-</blockquote>
-<h2 id="Rebuild-DOM"><a href="#Rebuild-DOM" class="headerlink" title="Rebuild DOM"></a><strong>Rebuild DOM</strong></h2><ol>
-<li>State(data)</li>
-<li>JSX template</li>
-<li>Generated DOM from state and JSX template</li>
-<li>State or props changed  </li>
-<li>New state and data formed DOM to substitute old DOM  </li>
-</ol>
-<p><em>Defect: Inefficient</em>  </p>
-<h2 id="Improvement"><a href="#Improvement" class="headerlink" title="Improvement"></a><strong>Improvement</strong></h2><ol>
-<li>State</li>
-<li>JSX template</li>
-<li>Generated DOM from state and JSX template</li>
-<li>State or props changed</li>
-<li>New state and data formed DOM</li>
-<li>Compared new DOM(Document Fragment) and original DOM and find difference</li>
-<li>Found that the content of input changed</li>
-<li>Substituted input in original DOM with new input</li>
-</ol>
-<p><em>Defect:</em> Still inefficient because we compared new DOM with the original one</p>
-<h2 id="React-Scheme"><a href="#React-Scheme" class="headerlink" title="React Scheme"></a><strong>React Scheme</strong></h2><ol>
-<li><p>State</p>
-</li>
-<li><p>JSX template</p>
-</li>
-<li><p>Generated virtual DOM( JS object to describe real DOM ) from state and JSX template</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'div'</span>,&#123;<span class="attr">id</span>: <span class="string">'abc'</span>&#125;,[<span class="string">'span'</span>,&#123;&#125;,<span class="string">'Hello, Koko'</span>]]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Generated DOM according to virtual DOM</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">'abc'</span>&gt;</span><br><span class="line">  &lt;span&gt;Hello, Koko&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>State or props changed</p>
-</li>
-<li><p>Generated new virtual DOM from new state and JSX template(Efficient!)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'div'</span>,&#123;<span class="attr">id</span>: <span class="string">'abc'</span>&#125;,[<span class="string">'span'</span>,&#123;&#125;,<span class="string">'Bye, Koko'</span>]]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Compared new virtual DOM and the original one and found changes(Efficient!)</p>
-</li>
-<li><p>Changed the original DOM</p>
-<pre><code class="javascript"><span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>item<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>
-<span class="keyword">return</span> React.createElement(<span class="string">'div'</span>,{},React.createElement(<span class="string">'span'</span>,{},<span class="string">'item'</span>));</code></pre>
+        <p>To be honest, I don’t like greedy.</p>
+<p>I always think the theory behind it is obvious and easy to understand but I never know how to apply it.</p>
+<p>This note is from <a href="https://web.archive.org/web/20160120093629/http://algobox.org/author/dietpepsi/" target="_blank" rel="noopener">dietpepsi</a>, and I add some my own comments in it.</p>
+<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a><strong>Problem</strong></h2><p>Given two arrays of length <code>m</code> and <code>n</code> with digits <code>0-9</code> representing two numbers. Create the maximum number of length <code>k &lt;= m + n</code> from digits of the two. The relative order of the digits from the same array must be preserved. Return an array of the <code>k</code> digits. You should try to optimize your time and space complexity.</p>
 <blockquote>
-<p>The above two lines are same, the process is like:</p>
-<p>JSX -&gt; createElement -&gt; virtual DOM -&gt; DOM</p>
+<p>nums1 = <code>[3, 4, 6, 5]</code><br>nums2 = <code>[9, 1, 2, 5, 8, 3]</code><br>k = <code>5</code><br>return <code>[9, 8, 6, 5, 3]</code></p>
 </blockquote>
-</li>
+<blockquote>
+<p>nums1 = <code>[6, 7]</code><br>nums2 = <code>[6, 0, 4]</code><br>k = <code>5</code><br>return <code>[6, 7, 6, 0, 4]</code></p>
+</blockquote>
+<blockquote>
+<p>nums1 = <code>[3, 9]</code><br>nums2 = <code>[8, 9]</code><br>k = <code>3</code><br>return <code>[9, 8, 9]</code></p>
+</blockquote>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a><strong>Solution</strong></h2><ul>
+<li><p>Easy Version I:</p>
+<p>Given one array of length <code>n</code>, create the maximum number of length <code>k</code>.</p>
+<p>The solution to this problem is Greedy with the help of stack. The recipe is as following</p>
+<blockquote>
+<ol>
+<li>Initialize a stack, we can use array to simulate it.</li>
+<li>If nums[i] is larger than the top of stack, i.e. stack[j-1] ,then we check how many numbers left in the array nums , which means we need to check if n-i&gt;k-j. If so, then we make j- - (Note this is a while loop).</li>
 </ol>
-<h2 id="Advantage"><a href="#Advantage" class="headerlink" title="Advantage"></a><strong>Advantage</strong></h2><ol>
-<li>More efficient</li>
-<li>Help to develop cross-platform application  </li>
-</ol>
-<h2 id="Diff-Algorithm-DOM-comparison"><a href="#Diff-Algorithm-DOM-comparison" class="headerlink" title="Diff Algorithm: DOM comparison  "></a><strong>Diff Algorithm</strong>: DOM comparison  </h2><ul>
-<li><p>Principle: Compare the same level, one we found difference, stop comparing and generated new DOM to replace all below-levels DOM</p>
-<p><img src="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/level.png" alt="level comparing"></p>
+</blockquote>
+<p>The time complexity is <code>O(N)</code> since each element is at most been pushed and popped once.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">int</span>[] maxArray(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)&#123;</span><br><span class="line">        <span class="keyword">int</span>[] ans=<span class="keyword">new</span> <span class="keyword">int</span>[k];</span><br><span class="line">        <span class="keyword">int</span> n=nums.length;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="keyword">while</span>(n-i&gt;k-j&amp;&amp;j&gt;<span class="number">0</span>&amp;&amp;ans[j-<span class="number">1</span>]&lt;nums[i])</span><br><span class="line">                j--;</span><br><span class="line">            <span class="keyword">if</span>(j&lt;k) ans[j++]=nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Advantages: Easy algorithm and fast speed</p>
+<li><p>Easy Version II:</p>
+<p>Given two array of length <code>m</code> and <code>n</code>, create maximum number of length <code>k = m + n</code>.</p>
+<p>We have <code>k</code> decisions to make, each time will just need to decide <code>ans[i]</code> is from which of the two. It seems obvious, we should always choose the larger one right? And when we meet two equal numbers, then we need to see what behind the two to decide. </p>
+<blockquote>
+<p>nums1 = <code>[6, 7]</code><br>nums2 = <code>[6, 0, 4]</code><br>k = <code>5</code><br>ans = <code>[6, 7, 6, 0, 4]</code></p>
+</blockquote>
+<p> The procedure is like the merge in a merge sort. However due to the “look next until not equal”, the time complexity is O(MN).</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">int</span>[] merge(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2)&#123;</span><br><span class="line">        <span class="keyword">int</span> m=nums1.length,n=nums2.length;</span><br><span class="line">        <span class="keyword">int</span>[] ans=<span class="keyword">new</span> <span class="keyword">int</span>[m+n];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>,idx=<span class="number">0</span>;idx&lt;m+n;idx++)&#123;</span><br><span class="line">            ans[idx]=greater(nums1,nums2,i,j)?nums1[i++]:nums2[j++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">greater</span><span class="params">(<span class="keyword">int</span>[] nums1,<span class="keyword">int</span>[] nums2,<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;nums1.length&amp;&amp;j&lt;nums2.length&amp;&amp;nums1[i]==nums2[j])&#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> j==nums2.length||i&lt;nums1.length&amp;&amp;nums1[i]&gt;nums2[j];</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Keys:</p>
-<p><img src="https://raw.githubusercontent.com/Hexess/BlogPhotos/master/images/key.png" alt="keys"></p>
-<ul>
-<li>Without keys: we can not connect the same layers directly, so we need two loops to compare each layer.</li>
-<li>With keys: like HashMap, we can easily compare the pairs(same layer) and find difference.<ul>
-<li>DO NOT use “index” as your key: since when you delete one item the indexes will be re-distributed to each existed items.</li>
-</ul>
-</li>
-</ul>
+<li><p>Final Version:</p>
+<p>First, we divide the <code>k</code> digits required into two parts, <code>i</code> and <code>k-i</code>. We then find the maximum number of length <code>i</code> in one array and the maximum number of length <code>k-i</code> in the other array using the algorithm in section 1. Now we combine the two results in to one array using the algorithm in section 2. After that we compare the result with the result we have and keep the larger one as final answer. The complexity is O((M+N)³)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] maxNumber(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2, <span class="keyword">int</span> k) &#123;</span><br><span class="line">        <span class="keyword">int</span> m=nums1.length,n=nums2.length;</span><br><span class="line">        <span class="keyword">int</span>[] ans=<span class="keyword">new</span> <span class="keyword">int</span>[k];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=Math.max(<span class="number">0</span>,k-n);i&lt;=k&amp;&amp;i&lt;=m;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span>[] candidate=merge(maxArray(nums1,i),maxArray(nums2,k-i));</span><br><span class="line">            ans=greater(ans,candidate,<span class="number">0</span>,<span class="number">0</span>)?ans:candidate;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 
@@ -420,7 +388,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/React/" rel="tag"># React</a>
+            <a href="/tags/greedy/" rel="tag"># greedy</a>
           
         </div>
       
@@ -433,8 +401,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/28/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/08/14/Algorithms-Binary-Indexed-Tree/" rel="next" title="Algorithms -- Binary Indexed Tree">
+                <i class="fa fa-chevron-left"></i> Algorithms -- Binary Indexed Tree
               </a>
             
           </div>
@@ -442,10 +410,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/31/React-Lifecycle-Methods/" rel="prev" title="React -- Lifecycle Methods">
-                React -- Lifecycle Methods <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -570,7 +534,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Rebuild-DOM"><span class="nav-number">1.</span> <span class="nav-text">Rebuild DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Improvement"><span class="nav-number">2.</span> <span class="nav-text">Improvement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-Scheme"><span class="nav-number">3.</span> <span class="nav-text">React Scheme</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advantage"><span class="nav-number">4.</span> <span class="nav-text">Advantage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Diff-Algorithm-DOM-comparison"><span class="nav-number">5.</span> <span class="nav-text">Diff Algorithm: DOM comparison  </span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
             
 
           </div>
